@@ -3,7 +3,7 @@
 // Use this editor to write, compile and run your Java code online
 import java.util.Scanner;
 
-class HelloWorld {
+class Permutation {
     public static boolean permutations(String s, String p) {
         if (s.length() != p.length()) {
             return false;
