@@ -19,15 +19,26 @@ public class RemoveDuplicates {
         Node prev = null;
         Node current = null;
         current = head;
-        HashSet<Integer> data = new HashSet<>();
+        // HashSet<Integer> data = new HashSet<>();
+        // while (current != null) {
+        // if (data.contains(current.data)) {
+        // prev.next = current.next;
+        // current = current.next;
+        // continue;
+        // }
+        // data.add(current.data);
+        // prev = current;
+        // current = current.next;
+        // }
         while (current != null) {
-            if (data.contains(current.data)) {
-                prev.next = current.next;
-                current = current.next;
-                continue;
+            Node runner = current;
+            while (runner != null && runner.next != null) {
+                if (runner.next.data == current.data) {
+                    runner.next = runner.next.next;
+                } else {
+                    runner = runner.next;
+                }
             }
-            data.add(current.data);
-            prev = current;
             current = current.next;
         }
         return head;
