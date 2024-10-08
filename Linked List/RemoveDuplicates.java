@@ -1,6 +1,5 @@
 
 // Write code to remove duplicates from an unsorted linked list.
-import java.util.HashSet;
 import java.util.Scanner;
 
 class Node {
@@ -16,7 +15,7 @@ public class RemoveDuplicates {
     public static Node removeDuplicate(Node head) {
         if (head == null)
             return null;
-        Node prev = null;
+        // Node prev = null;
         Node current = null;
         current = head;
         // HashSet<Integer> data = new HashSet<>();

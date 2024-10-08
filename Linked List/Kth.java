@@ -50,5 +50,6 @@ class Kth {
         else {
             System.out.println(result.data);
         }
+        sc.close();
     }
 }
