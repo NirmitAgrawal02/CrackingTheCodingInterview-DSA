@@ -10,7 +10,7 @@ class Node {
 }
 
 public class sumLists {
-    public static Node sum(Node head1, Node head2) {
+    public static Node sumReverse(Node head1, Node head2) {
         if (head1 == null) {
             return head2;
         }
@@ -38,7 +38,6 @@ public class sumLists {
             } else {
                 carry = 0;
             }
-            System.out.println(carry);
             temp.next = new Node(sum % 10);
             temp = temp.next;
             temp1 = temp1.next;
@@ -56,7 +55,42 @@ public class sumLists {
             }
             temp = temp.next;
         }
+
         return head.next;
+    }
+
+    public static Node sum(Node head1, Node head2) {
+        if (head1 == null) {
+            return head2;
+        }
+        if (head2 == null) {
+            return head1;
+        }
+        Node head = new Node(1);
+        Node temp1 = head1;
+        Node prev = null;
+        Node prev2 = null;
+        Node temp2 = head2;
+        while (temp1.next != null || temp2.next != null) {
+            if (temp1 != null) {
+                Node curr = temp1.next;
+                temp1.next = prev;
+                prev = temp1;
+                temp1 = curr;
+            }
+            if (temp2 != null) {
+                Node curr = temp2.next;
+                temp2.next = prev2;
+                prev2 = temp2;
+                temp2 = curr;
+            }
+        }
+        temp1.next = prev;
+        temp2.next = prev2;
+        head1 = temp1;
+        head2 = temp2;
+        head = sumReverse(head1, head2);
+        return head;
     }
 
     public static Node input(Scanner sc, Node head, int n) {
@@ -93,7 +127,9 @@ public class sumLists {
         System.out.println("Enter total Number of Nodes");
         int j = sc.nextInt();
         Node head2 = input(sc, i2, j);
-        Node head = sum(head1, head2);
+        Node head = sumReverse(head1, head2);
+        Node shead = sum(head1, head2);
         print(head);
+        print(shead);
     }
 }
