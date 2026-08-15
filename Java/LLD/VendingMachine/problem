@@ -1,0 +1,96 @@
+Vending Machine (LLD)
+Problem Statement
+Design and implement a Vending Machine system that allows users to select products, 
+insert coins/notes, dispense products, and return change. 
+The system should manage inventory, handle payments.
+
+1. Vending Machine System -> overall system which can handle all operations
+2. Products -> It would contain a list of products with their unique issued
+3. Money Class -> It would insert money or coin 
+4. Price
+5. Payments -> Handling Payments
+
+
+# Core Entities
+Vending Machine
+ 1. List of Products
+ 2. Size
+
+Methods:
+    ChooseProduct(Int id, int quantity)
+    {
+
+    }
+    dispenseProduct(Int id, int quantity)
+    {
+
+    }
+    InsertMoney(coins coin, notes note)
+    {
+
+    }
+    ReturnChange(coins coin, notes note)
+    {
+
+    }
+
+    displayMessage(String Message)
+    {
+
+    }
+
+Product
+
+    productId, quantity, name, price
+
+    isAvailable(int productid, int quantity)
+    {
+
+    }
+    DispenseProducts(int quantity, int productId)
+    {
+
+    }
+    restockProducts(int quantity String name)
+    {
+
+    }
+
+enum Money
+{
+    coin;
+    note;
+}
+
+Price
+{
+
+    CalculatePrice(int quantity, int productId)
+    {
+
+    }
+}
+
+PaymentMethod
+{
+ Money coin
+ Money note
+
+    calculateTotalAmount(Money coin, Money note)
+    {
+
+    }
+
+    returnChange(Money coin, Money note)
+    {
+
+    }
+}
+
+
+
+
+
+
+
+

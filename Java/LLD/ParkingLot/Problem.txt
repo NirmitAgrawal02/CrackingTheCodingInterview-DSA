@@ -1,0 +1,71 @@
+Problem Statement
+Design and implement a Parking Lot Management System that 
+supports parking and unparking of 
+different types of vehicles, parkingTicket 
+generation, fee calculation, and management of multiple 
+floors and spot types.
+
+
+Requirements
+
+1. Multiple Floors -> Parking can be occurrred different Floors
+2. Vehicles -> Multiple types of vehicles
+3. Spot Type -> Different types of spots accommodating differnet types of vehicles
+4. Parking ticking generation -> Generate a parking ticket when parked
+5. Unparking -> Allows vehicles to unpark and calculate the parking fees
+6. Fee Calculation -> Duration, We would calculate Fee
+7. Spot Allocation -> where we would allocate the spots accordingly.
+
+
+Core Entities: 
+
+1. ParkingLot : Overall System which contains the floors and overall operation
+2. ParkingFloor :Represents a single floor in the parking system and it manages its spots
+3. ParkingSpot : Represents a particular spotin a floor
+4. Fee Calcuation: calculate it on the basis of duration and vehicle type
+5. Vehicle Type - Represents different types of vehicles (Enum)
+6. Parkingticket - Represents a parking parkingTicket issued when a vehicle is parked.
+
+
+Parking Lot
+Method:
+    parkVehicle(Vehicle vehicle)
+    unparkVehicle(String ticketId)
+    addFloor(ParkingFloor floor)
+    getAvailableSpots()
+
+    Fields:
+    List of floors and mapping of tickets
+
+ParkingFloor
+Method
+    getAvailableSpots();
+    parkVehicle();
+    unparkVehicle();
+
+    Fields
+    isFull, List of Spots, Floor Number
+
+   ParkingSpot()
+   Method
+   isAvailable()
+   assignVehicle(vehicle vehicle)
+   removeVehicle(Vehicle vehicle)
+
+   Fields
+   Spot ID, Type, Current Vehicle 
+
+   Ticket:
+   Fields 
+   Ticket id
+   vehicle info
+   entry Time
+   spot info 
+
+Vehicle Type
+Enum -> Car , Bike, Truck Etc
+
+Fee Calculation
+Methods:
+Calculate Fee(ticket parkingTicket)
+
