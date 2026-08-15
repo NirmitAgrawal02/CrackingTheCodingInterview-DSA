@@ -64,14 +64,7 @@ public class VendingMachine{
     public void dispenseProduct(int id, int quantity)
     {
         Product product = this.productMap.get(id);
-        if(product != null)
-        {
-            product.setQuantity(product.getQuantity() - quantity);
-        }
-        else
-        {
-            System.out.println("Product is not available");
-        }
+        product.setQuantity(product.getQuantity() - quantity);
     }
 
     public void calculateTotalAmount(int id, int quantity)
@@ -90,7 +83,9 @@ public class VendingMachine{
     }
     public double ReturnChange()
     {
-        return this.payment.calculateChange();
+        double change = this.payment.calculateChange();
+        this.clearState();
+        return change;
     }
 
     public void restockProducts()

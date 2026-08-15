@@ -28,7 +28,7 @@ public class VendingMachineDemo {
         }
         vendingMachine.dispenseProduct(1, 2);
         vendingMachine.ReturnChange();
-        vendingMachine.clearState();
+     
         vendingMachine.restockProducts();
     }
     
