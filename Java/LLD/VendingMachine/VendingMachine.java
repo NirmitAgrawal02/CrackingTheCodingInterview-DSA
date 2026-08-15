@@ -1,10 +1,11 @@
 package LLD.VendingMachine;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class VendingMachine{
-    static int size = 0;
+    int size = 0;
     HashMap<Integer, Product> productMap = new HashMap<>();
     Payment payment;
     VendingMachine(int size)
@@ -15,15 +16,14 @@ public class VendingMachine{
     }
     public void addProduct(String name, int quantity, double price)
     {
-        if(size > 0)
+        if(size > 0 && quantity > 0)
         {
             Product product = new Product();
             product.setName(name);
             product.setQuantity(quantity);
-            product.setPrice((int) price);
+            product.setPrice(price);
             product.setId(size--);
-            productMap.put(product.getId(), product);
-            size--;
+            this.productMap.put(product.getId(), product);
         }
         else 
         {
@@ -32,14 +32,19 @@ public class VendingMachine{
     }
     public void showProducts()
     {
-        for(Map.Entry<Integer, Product> entry : productMap.entrySet())
+        for(Map.Entry<Integer, Product> entry : this.productMap.entrySet())
         {
             System.out.println("Product Name: " + entry.getValue().name + " Product Quantity: " + entry.getValue().quantity + " Product Price: " + entry.getValue().price);
         }
     }
     public void ChooseProduct(int id, int quantity)
     {
-        Product product = productMap.get(id);
+        Product product = this.productMap.get(id);
+        if(quantity <= 0)
+        {
+            System.out.println("Invalid Quantity");
+            return;
+        }
         if(product != null)
         {
             if(product.getQuantity() >= quantity)
@@ -58,7 +63,7 @@ public class VendingMachine{
     }
     public void dispenseProduct(int id, int quantity)
     {
-        Product product = productMap.get(id);
+        Product product = this.productMap.get(id);
         if(product != null)
         {
             product.setQuantity(product.getQuantity() - quantity);
@@ -74,9 +79,9 @@ public class VendingMachine{
         Product product = productMap.get(id);
         payment.calculateTotalAmount(quantity, product.getPrice());
     }
-    public void insertMoney(Coins coin, Notes note)
+    public void insertMoney(List<Coins> coins, List<Notes> notes)
     {
-        this.payment.insertMoney(coin, note);
+        this.payment.insertMoney(coins, notes);
     }
 
     public boolean isPaymentSufficient()
@@ -94,6 +99,10 @@ public class VendingMachine{
         {
             entry.getValue().setQuantity(10);
         }
+    }
+    public void clearState()
+    {
+        this.payment.clearState();
     }
 
 }
