@@ -15,7 +15,7 @@ public class Fees {
         public void calculateFee(LocalDateTime entryTime, VehicleType vehicleType ) {
             int hours = (int) java.time.Duration.between(entryTime, LocalDateTime.now()).toHours();
             int feeIndex = java.util.Arrays.asList(this.vehicleType).indexOf(vehicleType);
-            this.totalFees = this.fee[feeIndex] * hours;
+            this.totalFees = this.fee[feeIndex] + Math.max(hours - 1, 0) * this.fee[feeIndex];
         }
 
         public int getTotalFees() {

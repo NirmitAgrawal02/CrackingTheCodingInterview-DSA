@@ -6,24 +6,49 @@ import java.util.List;
 public class ParkingLot { 
     List<ParkingFloor> floor = new ArrayList<>();
     HashMap<String, ParketTickets> tickets = new HashMap<>();
+    HashMap<VehicleType, SpotSize> vehicleSpotSizeMap = new HashMap<>();
+    ParkingLot()
+    {
+        vehicleSpotSizeMap.put(VehicleType.CAR, SpotSize.MEDIUM);
+        vehicleSpotSizeMap.put(VehicleType.BIKE, SpotSize.SMALL);
+        vehicleSpotSizeMap.put(VehicleType.TRUCK, SpotSize.LARGE);
+    }
     public String parkVehicles(VehicleType vehicleType, String vehicleNumber) {
+        ParkingSpot nextBiggestSizeSpot = null;
+        ParkingFloor nextBiggestSizeFloor = null;
         for(ParkingFloor floor : floor)
         {
-            int[] result = floor.parkVehicles(VehicleType vehicleType);
-            if(result[0] != -1 && result[1] != -1)
+            ParkingSpot spot = floor.ifAvailableSpot(vehicleType);
+            if(spot == null)
             {
+                continue;
+            }
+            else if(spot.spotSize != vehicleSpotSizeMap.get(vehicleType))
+            {
+                nextBiggestSizeFloor = floor;
+                nextBiggestSizeSpot = spot;
+                continue;
+            }
+            int[] result = floor.parkVehicles(spot);
             ParketTickets ticket = new ParketTickets();
             ticket.generateTicket(vehicleNumber, vehicleType, result[0], result[1]);
             tickets.put(ticket.ticketId, ticket);
             return ticket.ticketId;
-            }
+        }
+        if(nextBiggestSizeSpot != null)
+        {
+            int[] result = nextBiggestSizeFloor.parkVehicles(nextBiggestSizeSpot);
+            ParketTickets ticket = new ParketTickets();
+            ticket.generateTicket(vehicleNumber, vehicleType, result[0], result[1]);
+            tickets.put(ticket.ticketId, ticket);
+            return ticket.ticketId;
         }
         return "";
     }
     public void unParkVehicles(String ticketId) {
         ParketTickets ticket = tickets.get(ticketId);
         if (ticket != null) {
-            floor.get(ticket.getFloor()).unParkVehicles(ticket.getSpot());
+            floor.get(ticket.getFloor() -1).unParkVehicles(ticket.getSpot());
             tickets.remove(ticketId);
             Fees fees = new Fees();
             fees.calculateFee(ticket.entryTime, ticket.vehicleType);
