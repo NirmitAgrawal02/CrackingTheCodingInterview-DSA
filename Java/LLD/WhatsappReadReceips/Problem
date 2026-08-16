@@ -1,0 +1,1 @@
+Design a low-level system for WhatsApp's read receipts feature, handling all three stages of message status: sent, received, and read (blue ticks).

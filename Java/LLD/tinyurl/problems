@@ -1,0 +1,18 @@
+Design a Tiny URL System
+
+Requirements:
+
+1. Generate Short URL
+2. Redirect to original URL
+3. We need to have each and every tiny url unique
+4. We need to be able to track how many times a tiny url is used
+
+
+Core Entities:
+
+1. TinyURL Service
+ -> It generates the tiny url
+2. TinyURL Repository
+-> It stores the mapping between long url and tiny url
+3. TinyURL Controller
+-> It creates a tiny url for a long url and returns the tiny url

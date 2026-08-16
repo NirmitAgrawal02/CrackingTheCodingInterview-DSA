@@ -1,0 +1,37 @@
+Design a Car Rental System
+
+Core Features :
+1. We want to rent out a car based on the requirements of the user
+2. We want to calcualte the duration of the rental and charge the user accordingly
+
+Any Specific Feature that we want to prioritize ? 
+1. We want to charge the user on the basis of the duration of the rental
+
+3. Assume that the Car Rental System should be able to handle multiple cars and multiple users
+
+Core Entities:
+
+Car Management System:
+    -> It would handle all the operation of the Car Rental System
+    Functions:
+        is car available
+        book a car
+        cancel a booking
+        view the status of the booking
+        Calculate the booking fee
+
+Car:
+    -> car type
+    -> Company
+    -> car id
+    -> car name
+    -> rental fee
+    -> availability
+
+Booking:
+    -> booking id
+    -> user name
+    -> car id
+    -> start time
+    -> end time
+    -> booking fee

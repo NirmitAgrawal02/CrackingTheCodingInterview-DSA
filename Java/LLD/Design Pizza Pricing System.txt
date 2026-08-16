@@ -2,7 +2,6 @@
 	Design Pizza Pricing System - Followup
 	Design Unix "find" command for file search
 	Design Unix "find" command - with boolean predicates
-	Design a Parking Lot
 	Design Retry Handler for API Calls
 	Design LRU Cache With Time Constraint
 	Design WhatsApp Read Receipts
@@ -10,7 +9,6 @@
 	Design Digital Wellbeing System to Track App Screen Usage
 	Design Locker Management System for Warehouse Packages
 	Design expense sharing app like Splitwise
-	Design Vending Machine Leasing System
 	Design a Parking Lot - Multi-Threaded
 	Design Stock Trading Platform Like Zerodha, Groww
 	Design Chess Game
