@@ -1,0 +1,9 @@
+Design Elevator Management System
+
+Requirement - Create an Elevator Management which helps 
+
+Core Entities: 
+ElevatorManager
+Elevator
+Direction
+
