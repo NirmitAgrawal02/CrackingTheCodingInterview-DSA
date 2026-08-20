@@ -1,0 +1,53 @@
+Create an amazon locker delivery system 
+
+    Requirements:
+        - Who will use this system ? 
+            - By the users who want to reservce this delivery system.
+        
+        - What feature are we working on handeling ? 
+            - Spot Allocation ? 
+            Both if possible
+
+        - Can one user book only one locker at a time or they could book multiple lockers ?
+        Core Entities:
+            User
+                Uuid
+                Name
+                Address
+                Phone Number
+                Can have multiple lockers
+
+            UserManager
+                - Add Users
+                - Delete Users
+
+            LockerManager
+                - ULockerManagerID
+                - List of Lockers 
+                    - Add Locker
+                    - Remove Locker
+                    - Book Locker
+
+            Locker
+                - ULID
+                - Locker Type
+                - Locker Status
+                - Locker DOOR
+                - Locker Manager
+                    - Assign Locker to the user
+                    - Unassign Locker to the user
+            
+            PINGeneration
+                - Reserve Time 
+                - Generate a pin for the user
+
+            enum Locker Type
+            {
+                BIG, SMALL, MEDIUM
+            }
+            enum Locker Status
+            {
+                AVAILABLE, UNAVAILABLE
+            }
+
+            

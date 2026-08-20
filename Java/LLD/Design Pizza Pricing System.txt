@@ -15,7 +15,6 @@
 	Design a Hit Counter/Webpage Visits Counter - Multi-Threaded
 	Design a Simple Elevator System - Multiple Lifts
 	Design a Movie ticket booking system like BookMyShow
-	Design Elevator Management System - Single Lift
 	Design a Text Editor with Undo & Redo
 	Design an order and inventory management system - Multi-Threaded
 	Design a rate limiter

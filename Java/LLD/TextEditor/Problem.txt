@@ -1,0 +1,29 @@
+Design a Text Editor with Undo & Redo
+
+Requirements - 
+
+Should be able to undo
+Should be able to redo
+Do we need to implement a write text feature ? -> No thats not necesarry We only need to design for undo and redo.
+Does undo happens on the basis of characters or words ?
+
+
+Core Entities -> 
+
+Text Editor: 
+    -> It would handle all the operations of the Text Editor
+    Functions:
+        Undo
+        Redo
+        Save 
+
+1. Undo 
+    - Enabled after any text operation
+    - Stack<String> -> Stack to store all text operations
+2. Redo 
+    - Redo feature would be disabled until undo has been done
+    - Stack<String> -> Stack to store any operations which was undo.
+    - If at any point any words were typed after undoing we would need to delete the redo feature ? 
+
+3. Save
+    - When a text editor is saved it would clear the undo stack and the redo stack

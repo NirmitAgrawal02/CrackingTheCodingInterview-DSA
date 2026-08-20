@@ -6,11 +6,12 @@ import java.util.PriorityQueue;
 
 public class ElevatorManager {
     private static ElevatorManager instance;
-    static int id = 1;
-    public Elevator Elevator;
+    static int id;
+    List<Elevator> elevators;
     ElevatorManager()
     {
-        Elevator = new Elevator(id++);
+        id = 1;
+        elevators = new ArrayList<>();
     }
     public static ElevatorManager getInstance()
     {
@@ -18,6 +19,10 @@ public class ElevatorManager {
         instance = new ElevatorManager();
         }
         return instance;
+    }
+    public void addElevator()
+    {
+        elevators.add(new Elevator(id++));
     }
     public synchronized void  addStop(int floor)
     {
@@ -33,11 +38,11 @@ public class ElevatorManager {
     }
     public void moveElevator()
     {
-        if(Elevator.direction == Direction.NONE)
+        if(Elevator.direction == Direction.IDLE)
         {
             changeDirection();
         }
-        while(Elevator.direction != Direction.NONE)
+        while(Elevator.direction != Direction.IDLE)
         {
         if(Elevator.direction == Direction.UP && Elevator.getUpStopLiftSize() > 0)
             {
@@ -56,11 +61,11 @@ public class ElevatorManager {
         PriorityQueue<Integer> upStopList = Elevator.upStopList;
         PriorityQueue<Integer> downStopList = Elevator.downStopList;
         Direction direction = Elevator.direction;
-        if(direction == direction.NONE && upStopList.size() > 0 && downStopList.size() == 0)
+        if(direction == direction.IDLE && upStopList.size() > 0 && downStopList.size() == 0)
         {
             Elevator.setDirection(Direction.UP);
         }
-        else if(direction == direction.NONE && upStopList.size() == 0 && downStopList.size() > 0)
+        else if(direction == direction.IDLE && upStopList.size() == 0 && downStopList.size() > 0)
         {
             Elevator.setDirection(Direction.DOWN);
         }
@@ -74,7 +79,7 @@ public class ElevatorManager {
         }
         else if((direction == Direction.UP || direction == direction.DOWN) && (upStopList.size() == 0 && downStopList.size() == 0))
         {
-            Elevator.setDirection(Direction.NONE);
+            Elevator.setDirection(Direction.IDLE);
         }
     }
 }

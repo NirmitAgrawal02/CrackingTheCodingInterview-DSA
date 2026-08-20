@@ -15,7 +15,7 @@ class Elevator
 
     public Elevator(int id)
     {
-        this.direction = Direction.NONE;
+        this.direction = Direction.IDLE;
         this.id = id;
         downStopList = new PriorityQueue<>(Collections.reverseOrder());
         upStopList = new PriorityQueue<>();
